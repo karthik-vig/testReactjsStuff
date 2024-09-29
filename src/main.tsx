@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import { StrictMode, Profiler } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import TestCreatePortal from './TestCreatePortal.tsx'
@@ -13,7 +13,25 @@ import TestUseDeferredValue from './TestUseDeferredValue.tsx'
 import TestUseId from './TestUseId.tsx'
 import './index.css'
 
+function onRender(
+  id: string, 
+  phase: string, 
+  actualDuration: number, 
+  baseDuration: number, 
+  startTime: number, 
+  commitTime: number) {
+
+  console.log(`The id of the component is: ${id}
+The phase is: ${phase}
+The actual Duration is: ${actualDuration}
+The Base duration is: ${baseDuration}
+The start time is: ${startTime}
+The Commit time: ${commitTime}`)
+
+}
+
 createRoot(document.getElementById('root')!).render(
+  <Profiler id="mainRoot" onRender={onRender} >
   <StrictMode>
     <App />
     <TestCreatePortal />
@@ -28,5 +46,6 @@ createRoot(document.getElementById('root')!).render(
     <TestUseTransition />
     <TestUseDeferredValue />
     <TestUseId />
-  </StrictMode>,
+  </StrictMode>
+  </Profiler>,
 )
