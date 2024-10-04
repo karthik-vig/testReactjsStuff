@@ -11,6 +11,7 @@ import TestUseCallback from './TestUseCallback.tsx'
 import TestUseTransition from './TestUseTransition.tsx'
 import TestUseDeferredValue from './TestUseDeferredValue.tsx'
 import TestUseId from './TestUseId.tsx'
+import TestAnimations from './testAnimations.tsx'
 import './index.css'
 
 function onRender(
@@ -33,6 +34,7 @@ The Commit time: ${commitTime}`)
 createRoot(document.getElementById('root')!).render(
   <Profiler id="mainRoot" onRender={onRender} >
   <StrictMode>
+    <TestAnimations />
     <App />
     <TestCreatePortal />
     <TestSuspense />

@@ -1,3 +1,5 @@
+import Animations from "./animations.js";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -5,7 +7,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx,css}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      ...Animations
+    },
   },
   plugins: [],
 }
